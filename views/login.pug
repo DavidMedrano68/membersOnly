@@ -1,0 +1,15 @@
+extends homePage
+
+block content
+   div(class="grid col-span-10 place-items-center gap-2")
+        form(method='POST' action='/login' class="flex gap-3 flex-col")
+            label(for='email' class="block") Email : 
+            input#logEmail(class="p-2 rounded-lg text-black  outline-0" type='email' placeholder='Please enter email' name='email')
+            label(for='password' class="block") Password : 
+            input#logPassword(class="p-2 rounded-lg text-black  outline-0" type='password' placeholder='Please enter password' name='password')
+            button(type="submit"  class="bg-blue-700 rounded-lg") Submit
+            a(class="underline" href="/register") Create Account
+        if errors
+            ul
+            for error in errors
+                li!= error.msg

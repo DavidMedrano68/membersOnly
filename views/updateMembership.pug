@@ -1,0 +1,15 @@
+extends homePage
+
+block content
+   if isSigned
+    div(class="grid col-span-10 place-items-center gap-2")
+        form(method='POST' action='' class="flex gap-3 flex-col")
+            div(class="text-center text-3xl") Upgrade Membership
+            label(for='secret' class="block") Key :
+            input#secret(class="border border-black p-2 rounded-lg text-black  outline-0" type='text' placeholder='Please secret code. ' name='secret' required )
+        if errors
+            ul
+            for error in errors
+                li!= error.msg
+    
+    

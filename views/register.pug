@@ -1,0 +1,25 @@
+extends homePage
+
+block content
+   div(class="grid col-span-10 place-items-center gap-2")
+    if !isSigned
+        div(class="text-center text-3xl") Register new user
+    
+        form(method='POST' action='' class="flex gap-3 flex-col")
+            
+            label(for='firstName' class="block") First Name : 
+            input#firstName(class="border border-black p-2 rounded-lg text-black  outline-0" type='text' placeholder='Please enter First name' name='firstName' required )
+            label(for='lastName' class="block") Last Name : 
+            input#lastName(class="border border-black p-2 rounded-lg text-black  outline-0" type='text' placeholder='Please enter Last name' name='lastName' required )
+            label(for='email' class="block") Email : 
+            input#email(class=" border border-black  p-2 rounded-lg text-black  outline-0" type='email' placeholder='Please enter Email ' name='email' required )
+            label(for='password' class="block") Password : 
+            input#password(class=" border-2 border-red-700   p-2 rounded-lg text-black  outline-0" type='password' placeholder='Please enter password ' name='password' required)
+            label(for="passwordCon" class="block") Confirm Password 
+            input#passwordCon(class="border-2 border-red-700  p-2 rounded-lg text-black  outline-0" type='password' placeholder='Re-enter Password' name='passwordCon' required)
+            button(type="submit" class="bg-blue-700 rounded-lg") Submit
+            script(src="/scripts/events.js")
+        if errors
+            ul
+            for error in errors
+                li!= error.msg

@@ -1,0 +1,31 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    link(rel='stylesheet', href='/stylesheets/style.css') 
+  body(class="h-screen w-screen grid grid-cols-12 bg-[#111827] text-white text-opacity-60")
+        nav(class="col-span-2")
+          block sidebar
+            ul(class="grid gap-5 place-items-center ")
+              li(class="font-semibold text-xl")
+                a(href='') Member's Only
+              if isSigned
+                li
+                  a(href='/allPost') View Posts
+                if !isAdmin
+                  li
+                    a(href="/upgradeMembership") Upgrade Membership
+                li
+                  form(action="/logout", method="get")
+                    button(type="submit" class="bg-red-700 rounded-xl p-2") Log out 
+                li
+                  a(class="bg-blue-700 rounded-xl p-2" href="/createPost") Create Post
+              if !isSigned
+                li
+                  a(href="/login") Login
+
+              
+        block content

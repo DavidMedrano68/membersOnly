@@ -1,0 +1,18 @@
+extends homePage
+
+block content
+    if isSigned
+        div(class="grid col-span-10 place-items-center gap-2")
+            
+            ul(class="grid place-items-center gap-4")
+                div(class="text-xl font-semibold h-min") Post Count: #{postCount}
+                for items in postList 
+                    li(class="rounded-xl border p-2 shadow scale cursor-pointer")
+                        if isSigned
+                            div(class="text-2xl") #{items.title}
+                        div(class="") #{items.text}
+                            if isAdmin && isSigned
+                                form(action=`${items.url}/delete`, method="post")
+                                    input(type="hidden" name="post" value=`${items._id}` required="true")
+                                    div #{items.time}
+                                    button(class="bg-red-700 rounded-xl p-2 hover:bg-red-800" type="submit") Delete 

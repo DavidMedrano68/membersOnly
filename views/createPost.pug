@@ -1,0 +1,16 @@
+extends homePage
+
+block content
+    if isSigned
+        div(class="grid col-span-10 place-items-center gap-2")
+
+            form(method='POST' action='/createPost' class="flex gap-3 flex-col")
+                label(for='title' class="block") Title : 
+                input#title(class="p-2 rounded-lg text-black  outline-0" type='text' placeholder='Please enter post title. ' name='title')
+                label(for='postText' class="block") Post text : 
+                textarea#postText(class="p-2 rounded-lg text-black  outline-0" type='text' placeholder='Please enter post text. ' name='postText' , cols="30", rows="10")
+                button(type="submit"  class="bg-blue-700 rounded-lg") Submit
+            if errors
+                ul
+                for error in errors
+                    li!= error.msg
